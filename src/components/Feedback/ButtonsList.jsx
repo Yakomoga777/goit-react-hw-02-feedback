@@ -6,6 +6,8 @@ export default class ButtonsList extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
+    total: 0,
+    positive: 0,
   };
 
   static defaultProps = {
@@ -17,27 +19,50 @@ export default class ButtonsList extends Component {
   handleIncrement = event => {
     if (parseInt(event.target.id) === 1) {
       this.setState(prevState => {
-        return { good: prevState.good + 1 };
+        return {
+          good: prevState.good + 1,
+          ...this.countTotalFeedback(prevState),
+          ...this.countPositiveFeedbackPercentage(prevState),
+        };
       });
     } else if (parseInt(event.target.id) === 2) {
       this.setState(prevState => {
-        return { neutral: prevState.neutral + 1 };
+        return {
+          neutral: prevState.neutral + 1,
+          ...this.countTotalFeedback(prevState),
+          ...this.countPositiveFeedbackPercentage(prevState),
+        };
       });
     } else if (parseInt(event.target.id) === 3) {
       this.setState(prevState => {
-        return { bad: prevState.bad + 1 };
+        return {
+          bad: prevState.bad + 1,
+          ...this.countTotalFeedback(prevState),
+          ...this.countPositiveFeedbackPercentage(prevState),
+        };
       });
     }
-
-    // console.log('+1');
-    console.log(event.target.id);
   };
-  // countTotalFeedback();
-  // countPositiveFeedbackPercentage()
+
+  //Метод підрахунку голосів
+  countTotalFeedback(prevState) {
+    const { good, neutral, bad } = prevState;
+
+    const total = good + neutral + bad + 1;
+
+    return { total: total };
+  }
+
+  countPositiveFeedbackPercentage(prevState) {
+    const { total, good } = prevState;
+    const positive = (good / total) * 100;
+    console.log(positive, total);
+    return { positive: positive };
+  }
 
   render() {
     const { titleBtn, titleStat, id } = this.props;
-    const { good, neutral, bad } = this.state;
+    const { good, neutral, bad, total, positive } = this.state;
     return (
       <>
         <h2>{titleBtn}</h2>
@@ -55,9 +80,11 @@ export default class ButtonsList extends Component {
         <div>
           <h2>{titleStat}</h2>
           <ul>
-            <li id="1">Good: {good}</li>
-            <li id="2">Neutral: {neutral}</li>
-            <li id="3">Bad: {bad}</li>
+            <li>Good: {good}</li>
+            <li>Neutral: {neutral}</li>
+            <li>Bad: {bad}</li>
+            <li>Total: {total}</li>
+            <li>Positive feedback: {positive}%</li>
           </ul>
         </div>
       </>

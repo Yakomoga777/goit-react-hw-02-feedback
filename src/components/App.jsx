@@ -1,16 +1,12 @@
+import React from 'react';
+import ButtonsList from './Feedback/ButtonsList';
+// import Statistics from './Feedback/Statistics';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <ButtonsList titleBtn="Please leave feedback" titleStat="Statistics" />
+      {/* <Statistics title="Statistics" /> */}
     </div>
   );
 };

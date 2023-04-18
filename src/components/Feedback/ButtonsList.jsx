@@ -61,7 +61,7 @@ export default class ButtonsList extends Component {
   }
 
   render() {
-    const { titleBtn, titleStat, id } = this.props;
+    const { titleBtn, titleStat } = this.props;
     const { good, neutral, bad, total, positive } = this.state;
     return (
       <>

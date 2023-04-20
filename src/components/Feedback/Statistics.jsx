@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 // import FeedbackOptions from './FeedbackOptions';
 
 export default class Statistics extends Component {
-  //   state = {
-  //     // // good: 0,
-  //     // // neutral: 0,
-  //     // bad: 0,
-  //   };
-
   static defaultProps = {
     title: null,
   };
@@ -21,24 +15,6 @@ export default class Statistics extends Component {
     total: PropTypes.number,
     positivePercentage: PropTypes.number,
   };
-
-  //   addFeedback = evt => {
-  //     this.setState(prevState => {
-  //       // console.log(evt.target.name);
-  //       return { [evt.target.name]: prevState[evt.target.name] + 1 };
-  //     });
-  //   };
-
-  //   countTotalFeedback = () => {
-  //     const total = this.state.good + this.state.neutral + this.state.bad;
-  //     return total;
-  //   };
-
-  //   countPositiveFeedbackPercentage() {
-  //     const positive = (this.state.good / this.countTotalFeedback()) * 100;
-
-  //     return positive;
-  //   }
 
   render() {
     const { title, good, neutral, bad, total, positivePercentage } = this.props;

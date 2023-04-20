@@ -68,11 +68,3 @@ export class App extends Component {
     // }
   }
 }
-// export const App = () => {
-//   return (
-//     <div>
-//       <ButtonsList titleBtn="Please leave feedback" titleStat="Statistics" />
-//       <Statistics title="Statistics" good={Statistics.state} />
-//     </div>
-//   );
-// };

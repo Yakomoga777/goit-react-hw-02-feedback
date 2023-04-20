@@ -44,16 +44,14 @@ export class App extends Component {
     // if (total === 0) {
     return (
       <div>
-        <Notification message="There is no feedback" />
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={options}
             onLeaveFeedback={this.addFeedback}
           />
         </Section>
-
-        {total ? (
-          <Section title="Statistics">
+        <Section title="Statistics">
+          {total ? (
             <Statistics
               good={good}
               neutral={neutral}
@@ -61,10 +59,10 @@ export class App extends Component {
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
-          </Section>
-        ) : (
-          ``
-        )}
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
       </div>
     );
     // }
